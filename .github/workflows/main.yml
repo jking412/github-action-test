@@ -19,7 +19,7 @@ jobs:
         with:
           deploy_token: ${{secrets.DEPLOY_TOKEN}}
           server_host: 22
-          docker_host: ${{secrets.HOST}}
+          docker_host: 121.199.52.135
           docker_username: skynesser
           docker_password: ${{secrets.PASSWORD}}
           docker_namespace: skynesser
