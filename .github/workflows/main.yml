@@ -45,7 +45,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/github-action:latest
+          tags: skynesser/github-action:latest
       # push后，用ssh连接服务器执行脚本
       - name: SSH
         uses: fifsky/ssh-action@master
