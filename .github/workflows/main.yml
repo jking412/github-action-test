@@ -54,4 +54,4 @@ jobs:
             sh start.sh
           host: ${{ secrets.HOST }}
           user: ${{ secrets.USER }}
-          password : ${{ secrets.PASSWORD}}
+          key: ${{ secrets.PRIVATE_KEY}}
