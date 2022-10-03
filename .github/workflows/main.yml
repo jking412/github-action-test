@@ -19,7 +19,7 @@ jobs:
         with:
           deploy_token: ${{secrets.DEPLOY_TOKEN}}
           server_host: root@121.199.52.135
-          docker_host: ''
+          docker_host: docker.io/library
           docker_username: skynesser
           docker_password: ${{secrets.PASSWORD}}
           docker_namespace: skynesser
