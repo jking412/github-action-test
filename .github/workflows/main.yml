@@ -47,8 +47,7 @@ jobs:
 #          file: ./Dockerfile
 #          push: true
 #          tags: skynesser/github-action:latest
-  deploy:
-    needs: compile
+  job:
     runs-on: self-hosted
     steps:
       - name: Deploy
