@@ -7,25 +7,8 @@ on:
   pull_request:
     branches: [ main ]
 
+
 jobs:
-  job:
-    name: Push action job
-    runs-on: self-hosted
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Push test
-        uses: littleboyfury/ssh-docker-run@v1.0.0
-        with:
-          deploy_token: ${{secrets.DEPLOY_TOKEN}}
-          server_host: root@121.199.52.135
-          docker_host: docker.io/library
-          docker_username: skynesser
-          docker_password: ${{secrets.PASSWORD}}
-          docker_namespace: skynesser
-          docker_repo: github-action
-          image_tag: 'latest'
-          container_port: '8000:8000'
 #  compile:
 #    runs-on: ubuntu-latest
 #    steps:
@@ -64,3 +47,19 @@ jobs:
 #          file: ./Dockerfile
 #          push: true
 #          tags: skynesser/github-action:latest
+  deploy:
+    needs: compile
+    runs-on: self-hosted
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: 22
+          script: |
+            docker pull skynesser/github-action:latest
+            docker stop github-action
+            docker rm github-action
+            docker run -d --name github-action -p 8000:8000 skynesser/github-action:latest
