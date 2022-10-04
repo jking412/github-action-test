@@ -47,15 +47,15 @@ jobs:
 #          file: ./Dockerfile
 #          push: true
 #          tags: skynesser/github-action:latest
-  job:
+  deploy:
     runs-on: self-hosted
     steps:
       - name: Deploy
         uses: appleboy/ssh-action@master
         with:
-          host: 121.199.52.135
-          username: root
-          password: @Imskynesser100
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
           port: 22
           script: |
             docker pull skynesser/github-action:latest
