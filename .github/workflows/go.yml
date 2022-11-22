@@ -9,12 +9,12 @@ on: [push]
 jobs:
   # 工作的名字叫做build
   build:
-	# 运行在ubuntu上
+    # 运行在ubuntu上
     runs-on: ubuntu-latest
     steps:
       # 使用actions，将文件传到服务器上，use声明使用的actions
       - uses: actions/checkout@v3
-	  # 配置go语言环境	
+      # 配置go语言环境	
       - name: Set up Go
         uses: actions/setup-go@v3
         # 配置actions的参数，这里是go的版本
