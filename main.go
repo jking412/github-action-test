@@ -6,7 +6,8 @@ import (
 )
 
 func HelloWorld(c *gin.Context) {
-	c.String(http.StatusOK, "hello world!   ")
+	c.String(http.StatusOK, "hello world!   dsad")
+	dasdasdsa
 }
 
 func main() {
